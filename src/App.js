@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Game from './Game';
+import Player from './Player';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Home = () => {
@@ -22,30 +22,6 @@ const Home = () => {
     </div>
   )
 }
-
-const Player = () => {
-  return (
-    <div>
-      <label>Player name:</label>
-      <input type="text"></input>
-      <br></br>
-
-      <label>Choose a color:</label>
-
-      <select name="color" id="color">
-        <option value="Red">Red</option>
-        <option value="Black">Black</option>
-      </select>
-      <Router>
-        <nav>
-          <Link to="/game">Game</Link>
-        </nav>
-        <Route path="/game" component={Game}></Route>
-      </Router>
-    </div>
-  )
-}
-
 
 
 function App() {

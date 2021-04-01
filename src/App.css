@@ -57,32 +57,88 @@ body{
   }
 } */
 
-.board {
-  background-image: linear-gradient(#3ca3ff, #005eb3);
-  width: 800px;
-  margin: auto;
-  padding: 8px;
+h1 {
+  text-align: center;
+  font-size: 50px;
 }
 
-/* .board > .cell { */
-.cell {
-  width: calc(800px / 7 - 8px);
-  height: calc(800px / 7 - 8px);
-  background: white;
-  display: inline-block;
-  box-sizing: border-box;
-  border-radius: 50%;
-  margin: 4px;
+table {
+  margin: 0 auto;
+  border-spacing: 0px 0px;
+}
+
+.button {
+  background-color: #303030;
+  color: #50C8FF;
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  text-indent: -9999px;
+  /* transition: background-color 0.5s, color 0.5s; */
 }
 
-.cell.p1{
-  background-color: black;
-  color: white;
+.button:hover {
+  background-color: #50C8FF;
+  color: #303030;
+  /* transition: background-color 0.5s, color 0.5s; */
 }
 
-.cell.p2{
+.cell {
+  height: 70px;
+  width: 70px;
+  background-color: #1990ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* .circle {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #000;
+  border-radius: 100px;
+} */
+
+/* .circles {
+  margin: -40px 0 25px 0;
+  display: flex;
+  justify-content: center;
+} */
+
+
+.message {
+  text-align: center;
+  font-size: 17px;
+}
+
+.white {
+  height: 60px;
+  width: 60px;
+  background-color: #FFF;
+  border-radius: 100px;
+}
+
+.red {
+  height: 60px;
+  width: 60px;
   background-color: red;
-  color: black;
+  border-radius: 100px;
+  /* transition: background-color 0.5s; */
+}
+
+.black {
+  height: 60px;
+  width: 60px;
+  background-color: black;
+  border-radius: 100px;
+  /* transition: background-color 0.5s; */
 }

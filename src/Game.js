@@ -1,66 +1,99 @@
-import React, { Component } from 'react'
-// import logo from './logo.svg';
-// import './App.css';
+import React, { Component } from 'react';
+import Row from './Row';
+import checkAll from './CheckAll';
 
-import Cell from './Cell';
 
 class Game extends Component {
-
   constructor(props) {
     super(props);
-
+    
     this.state = {
-      current: 'red', //can also be black
-      board: [  //board is an array of cols
-        [], //col 0
-        [], //col 1
-        [], //col 2
-        [], //col 3
-        [], //col 4
-        [], //col 5
-        [], //col 6
-      ],
+      player1: 1,
+      player2: 2,
+      currentPlayer: null,
+      board: [],
+      gameOver: false,
+      message: '',
+      player1name: this.props.p1name,
+      player2name: this.props.p2name
     };
+    
+    // Bind play function to Game component
+    this.play = this.play.bind(this);
   }
-
-  togglePlayerTurn = () => {
-    return this.state.current === 'red' ? 'black' : 'red';
-  };
-
-  sendTileDrop(column) {
-    console.log("drop tile in column " + column);
-    const tile = this.state.current;
-    const col = this.state.board[column].concat(tile); //add a 'red' or 'black' to the end of the col array
-    const newBoard = this.state.board.slice();  //slice() does a shallow copy of an array. Need to copy, can't change directly
-    newBoard[column] = col;
+  
+  // Starts new game
+  initBoard() {
+    // Create a blank 6x7 matrix
+    let board = [];
+    for (let r = 0; r < 6; r++) {
+      let row = [];
+      for (let c = 0; c < 7; c++) { row.push(null) }
+      board.push(row);
+    }
+    
     this.setState({
-      board: newBoard,
-      current: this.togglePlayerTurn(this.state.current),
+      board: board,
+      currentPlayer: this.state.player1,
+      gameOver: false,
+      message: ''
     });
   }
-
-  render() {
-    console.log('App render')
-    const cells = [];
-
-    //enclose all of each row into a container
-    for (let y = 5; y >= 0; y--) {
-      const row = [];
-      for (let x = 0; x < 7; x++) {
-        row.push(<Cell key={x} x={x} board={this.state.board} y={y} onClick={this.sendTileDrop.bind(this)} />);
+  
+  togglePlayer() {
+    return (this.state.currentPlayer === this.state.player1) ? this.state.player2 : this.state.player1;
+  }
+  
+  play(c) {
+    if (!this.state.gameOver) {
+      // Place piece on board
+      let board = this.state.board;
+      for (let r = 5; r >= 0; r--) {
+        if (!board[r][c]) {
+          board[r][c] = this.state.currentPlayer;
+          break;
+        }
       }
-      cells.push(<div className="row" key={y}>{row}</div>)
-    }
 
+      // Check status of board
+      let result = checkAll(board);
+      if (result === this.state.player1) {
+        this.setState({ board, gameOver: true, message: this.state.player1name + ' (red) wins!' });
+      } else if (result === this.state.player2) {
+        this.setState({ board, gameOver: true, message: this.state.player2name + ' (black) wins!' });
+      } else if (result === 'draw') {
+        this.setState({ board, gameOver: true, message: 'Draw game.' });
+      } else {
+        this.setState({ board, currentPlayer: this.togglePlayer() });
+      }
+    } 
+  }
+  
+
+  
+  componentWillMount() {
+    this.initBoard();
+  }
+  
+  render() {
     return (
-      <div className="App" >
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <div className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer" /> */}
-        <div className="board">{cells}</div>
+      <div>
+        
+        
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            {this.state.board.map((row, i) => (<Row key={i} row={row} play={this.play} />))}
+          </tbody>
+        </table>
+        
+        <p className="message">{this.state.message}</p>
+        <div className="button" onClick={() => {this.initBoard()}}>New Game</div>
       </div>
     );
   }
-
 }
+
 
 export default Game;

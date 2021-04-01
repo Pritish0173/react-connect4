@@ -1,26 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-class Cell extends Component {
-
-    render() {
-        const board = this.props.board;
-        const x = this.props.x;
-        const y = this.props.y;
-        let classes = 'cell';
-        if (board[x][y] !== undefined) {
-            if (board[x][y] === 'red') {
-                classes += ' p2';
-            } else {
-                classes += ' p1';
-            }
-        }
-        console.log("classes =" + classes)
-        return (
-            <div className={classes} onClick={() => this.props.onClick(this.props.x)}>
-                <p>{this.props.x}, {this.props.y} </p>
-            </div>
-        )
+const Cell = ({ value, columnIndex, play }) => {
+    let color = 'white';
+    if (value === 1) {
+      color = 'red';
+    } else if (value === 2) {
+      color = 'black';
     }
-}
+      
+    return (
+      <td>
+        <div className="cell" onClick={() => {play(columnIndex)}}>
+          <div className={color}></div>
+        </div>
+      </td>
+    );
+  };
 
 export default Cell;
