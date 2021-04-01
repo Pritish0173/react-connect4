@@ -2,7 +2,7 @@
 import './App.css';
 import React from 'react';
 import Player from './Player';
-import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Switch,Route, Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -26,22 +26,47 @@ const Home = () => {
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-      <nav>
-        <ul>
-          <Link to="/">Home</Link>
-        </ul>
-        <ul>
-          <Link to="/player">Player</Link>
-        </ul>
+    // <Router>
+    //   <div className="App">
+    //   <nav>
+    //     <ul>
+    //       <Link to="/">Home</Link>
+    //     </ul>
+    //     <ul>
+    //       <Link to="/player">Player</Link>
+    //     </ul>
           
-      </nav>
-      <Route path="/" exact component={Home}></Route>
-      <Route path="/player" component={Player}></Route>
+    //   </nav>
+    //   <Route path="/" exact component={Home}></Route>
+    //   <Route path="/player" component={Player}></Route>
 
-      </div>
-    </Router>
+    //   </div>
+    // </Router>
+
+  
+
+    <div className="routes">
+      <Router>
+        <div>
+          <h1>Connect 4</h1>
+          <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
+          <Link to="/play">Play Game</Link> &nbsp;&nbsp;&nbsp;
+
+          <hr/>
+        </div>
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/play">
+            <Player />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+
+
 
   );
 }

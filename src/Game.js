@@ -89,7 +89,7 @@ class Game extends Component {
         </table>
         
         <p className="message">{this.state.message}</p>
-        <div className="button" onClick={() => {this.initBoard()}}>New Game</div>
+        <button className="button" onClick={() => {this.initBoard()}}>New Game</button>
       </div>
     );
   }

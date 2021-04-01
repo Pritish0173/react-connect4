@@ -23,11 +23,16 @@ const Search = () => {
 
   return (
     <div>
-      <label>Player 1 Name:</label>
+      <br></br>
+      <label>Player 1 Name (Red) : </label>
       <input type="text" onChange={e => changep1Name(e.target.value)}></input>
-      <label>Player 1 Name:</label>
+      <br></br>
+      <label>Player 2 Name (Black) : </label>
       <input type="text" onChange={e => changep2Name(e.target.value)}></input>
-      <input type="submit" value="Search" onClick={onClick} />
+      <br></br>
+      <br></br>
+      <input className="button" type="button" value="Start Game" onClick={onClick} />
+
       { show ? <Game p1name={player1name} p2name={player2name}/> : null }
     </div>
   )
