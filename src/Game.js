@@ -24,7 +24,7 @@ class Game extends Component {
   
   // Starts new game
   initBoard() {
-    // Create a blank 6x7 matrix
+    // Create a blank 6x7 board
     let board = [];
     for (let r = 0; r < 6; r++) {
       let row = [];
@@ -41,7 +41,12 @@ class Game extends Component {
   }
   
   togglePlayer() {
-    return (this.state.currentPlayer === this.state.player1) ? this.state.player2 : this.state.player1;
+    if(this.state.currentPlayer === this.state.player1){
+      return this.state.player2;
+    }
+    else{
+      return this.state.player1;
+    }
   }
   
   play(c) {
@@ -58,13 +63,13 @@ class Game extends Component {
       // Check status of board
       let result = checkAll(board);
       if (result === this.state.player1) {
-        this.setState({ board, gameOver: true, message: this.state.player1name + ' (red) wins!' });
+        this.setState({ board: board, gameOver: true, message: this.state.player1name + ' (red) wins!' });
       } else if (result === this.state.player2) {
-        this.setState({ board, gameOver: true, message: this.state.player2name + ' (black) wins!' });
+        this.setState({ board: board, gameOver: true, message: this.state.player2name + ' (black) wins!' });
       } else if (result === 'draw') {
-        this.setState({ board, gameOver: true, message: 'Draw game.' });
+        this.setState({ board: board, gameOver: true, message: 'Draw game.' });
       } else {
-        this.setState({ board, currentPlayer: this.togglePlayer() });
+        this.setState({ board: board, currentPlayer: this.togglePlayer() });
       }
     } 
   }

@@ -6,7 +6,7 @@
 }
 
 .block{
-  background-color: #282c34;
+  background-image: url("https://i.pinimg.com/originals/59/e7/58/59e758cd94b6a989aa2cc7b4eeb68098.jpg");
   /* display: flex; */
   flex-direction: column;
   /* align-items: center; */
@@ -18,7 +18,7 @@
 }
 
 body{
-  background-color: #282c34;
+  background-image: url("https://i.pinimg.com/originals/59/e7/58/59e758cd94b6a989aa2cc7b4eeb68098.jpg");
 }
 
 
@@ -48,6 +48,7 @@ table {
   cursor: pointer;
 
 }
+
 
 .button:hover {
   background-color: skyblue;
@@ -97,6 +98,8 @@ table {
   color: skyblue;
   font-size:150%;
   text-align: center;
+  /* background-image: url("connect4r.jpg"); */
+  /* width: 50%; */
 }
 
 a{
@@ -112,4 +115,18 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: large;
+}
+
+.containerflex{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 0.5%;
+}
+
+.img{
+  background-image: url("connect4r.jpg");
+  width: 55%;
+  padding-bottom: 14%;
+  margin-left: 5%;
 }

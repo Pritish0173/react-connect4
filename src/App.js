@@ -25,35 +25,21 @@ const Home = () => {
 
 
 function App() {
-  return (
-    // <Router>
-    //   <div className="App">
-    //   <nav>
-    //     <ul>
-    //       <Link to="/">Home</Link>
-    //     </ul>
-    //     <ul>
-    //       <Link to="/player">Player</Link>
-    //     </ul>
-          
-    //   </nav>
-    //   <Route path="/" exact component={Home}></Route>
-    //   <Route path="/player" component={Player}></Route>
+  return (  
 
-    //   </div>
-    // </Router>
-
-  
-
-    <div className="routes">
+    <div>
       <Router>
-        <div>
-          <h1>Connect 4</h1>
-          <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
-          <Link to="/play">Play Game</Link> &nbsp;&nbsp;&nbsp;
-
-          <hr/>
+        <div  className="containerflex">
+        
+          <div className="routes">
+            <h1>Connect 4</h1>
+            <Link to="/">Home</Link> &nbsp;&nbsp;&nbsp;
+            <Link to="/play">Play Game</Link> &nbsp;&nbsp;&nbsp;
+          </div>
+          <div className="img"></div>
         </div>
+          <hr/>
+        
 
         <Switch>
           <Route exact path="/">
